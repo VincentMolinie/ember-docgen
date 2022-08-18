@@ -1,16 +1,16 @@
 {
-  "name": "react-docgen",
-  "version": "6.0.0-alpha.3",
-  "description": "A CLI and toolkit to extract information from React components for documentation generation.",
+  "name": "ember-docgen",
+  "version": "0.1.0",
+  "description": "A CLI and toolkit to extract information from Ember components for documentation generation.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/reactjs/react-docgen.git"
+    "url": "git+https://github.com/VincentMolinie/ember-docgen.git"
   },
   "bugs": {
-    "url": "https://github.com/reactjs/react-docgen/issues"
+    "url": "https://github.com/VincentMolinie/ember-docgen/issues"
   },
   "bin": {
-    "react-docgen": "bin/react-docgen.js"
+    "ember-docgen": "bin/ember-docgen.js"
   },
   "browser": {
     "./src/importer/makeFsImporter.ts": "./src/importer/makeIgnoreImports.ts",
@@ -35,7 +35,7 @@
     "website:start": "yarn website:install && cd website && yarn start"
   },
   "keywords": [
-    "react",
+    "ember",
     "documentation-generation"
   ],
   "author": {

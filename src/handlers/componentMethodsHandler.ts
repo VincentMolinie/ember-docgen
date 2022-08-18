@@ -1,7 +1,7 @@
 import getMemberValuePath from '../utils/getMemberValuePath';
 import type { MethodNodePath } from '../utils/getMethodDocumentation';
 import getMethodDocumentation from '../utils/getMethodDocumentation';
-import isReactComponentClass from '../utils/isReactComponentClass';
+import isEmberComponentClass from '../utils/isEmberComponentClass';
 import isReactComponentMethod from '../utils/isReactComponentMethod';
 import type Documentation from '../Documentation';
 import { shallowIgnoreVisitors } from '../utils/traverse';
@@ -105,7 +105,7 @@ const componentMethodsHandler: Handler = function (
   // Extract all methods from the class or object.
   let methodPaths: Array<{ path: MethodNodePath; isStatic?: boolean }> = [];
 
-  if (isReactComponentClass(componentDefinition)) {
+  if (isEmberComponentClass(componentDefinition)) {
     methodPaths = (
       componentDefinition
         .get('body')

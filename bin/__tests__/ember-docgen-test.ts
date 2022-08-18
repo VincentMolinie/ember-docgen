@@ -16,7 +16,7 @@ function run(
   stdin: Buffer | string | null = null,
 ): Promise<[string, string]> {
   return new Promise(resolve => {
-    const docgen = spawn(path.join(__dirname, '../react-docgen.js'), args);
+    const docgen = spawn(path.join(__dirname, '../ember-docgen.js'), args);
     let stdout = '';
     let stderr = '';
 
@@ -37,7 +37,7 @@ const component = fs.readFileSync(
   path.join(__dirname, '__fixtures__/Component.js'),
 );
 
-describe.skip('react-docgen CLI', () => {
+describe.skip('ember-docgen CLI', () => {
   let tempDir = '';
   let tempComponents: string[] = [];
   let tempNoComponents: string[] = [];

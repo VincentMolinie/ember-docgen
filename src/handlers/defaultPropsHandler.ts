@@ -3,7 +3,7 @@ import getMemberValuePath from '../utils/getMemberValuePath';
 import printValue from '../utils/printValue';
 import resolveToValue from '../utils/resolveToValue';
 import resolveFunctionDefinitionToReturnValue from '../utils/resolveFunctionDefinitionToReturnValue';
-import isReactComponentClass from '../utils/isReactComponentClass';
+import isEmberComponentClass from '../utils/isEmberComponentClass';
 import isReactForwardRefCall from '../utils/isReactForwardRefCall';
 import type Documentation from '../Documentation';
 import type { DefaultValueDescriptor } from '../Documentation';
@@ -158,7 +158,7 @@ const defaultPropsHandler: Handler = function (
   /**
    * function, lazy, memo, forwardRef etc components can resolve default props as well
    */
-  if (!isReactComponentClass(componentDefinition)) {
+  if (!isEmberComponentClass(componentDefinition)) {
     statelessProps = getStatelessPropsPath(componentDefinition);
   }
 

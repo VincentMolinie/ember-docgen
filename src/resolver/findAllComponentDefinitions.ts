@@ -1,4 +1,4 @@
-import isReactComponentClass from '../utils/isReactComponentClass';
+import isEmberComponentClass from '../utils/isEmberComponentClass';
 import isReactCreateClassCall from '../utils/isReactCreateClassCall';
 import isReactForwardRefCall from '../utils/isReactForwardRefCall';
 import isStatelessComponent from '../utils/isStatelessComponent';
@@ -20,7 +20,7 @@ interface TraverseState {
 }
 
 function classVisitor(path: NodePath, state: TraverseState) {
-  if (isReactComponentClass(path)) {
+  if (isEmberComponentClass(path)) {
     normalizeClassDefinition(path);
     state.foundDefinitions.add(path);
   }

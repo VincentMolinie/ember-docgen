@@ -1,6 +1,6 @@
 import type { NodePath } from '@babel/traverse';
 import type { ComponentNode } from '../resolver';
-import isReactComponentClass from './isReactComponentClass';
+import isEmberComponentClass from './isEmberComponentClass';
 import isReactCreateClassCall from './isReactCreateClassCall';
 import isReactForwardRefCall from './isReactForwardRefCall';
 import isStatelessComponent from './isStatelessComponent';
@@ -12,7 +12,7 @@ export function isComponentDefinition(
 ): path is NodePath<ComponentNode> {
   return (
     isReactCreateClassCall(path) ||
-    isReactComponentClass(path) ||
+    isEmberComponentClass(path) ||
     isStatelessComponent(path) ||
     isReactForwardRefCall(path)
   );
@@ -28,7 +28,7 @@ export default function resolveComponentDefinition(
     if (resolvedPath.isObjectExpression()) {
       return resolvedPath;
     }
-  } else if (isReactComponentClass(definition)) {
+  } else if (isEmberComponentClass(definition)) {
     normalizeClassDefinition(definition);
 
     return definition;

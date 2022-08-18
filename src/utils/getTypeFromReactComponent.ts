@@ -3,7 +3,7 @@ import type Documentation from '../Documentation';
 import getMemberValuePath from './getMemberValuePath';
 import getTypeAnnotation from './getTypeAnnotation';
 import getTypeParameters from './getTypeParameters';
-import isReactComponentClass from './isReactComponentClass';
+import isEmberComponentClass from './isEmberComponentClass';
 import isReactForwardRefCall from './isReactForwardRefCall';
 import resolveGenericTypeAnnotation from './resolveGenericTypeAnnotation';
 import resolveToValue from './resolveToValue';
@@ -44,7 +44,7 @@ function getStatelessPropsPath(componentDefinition: NodePath): NodePath {
 export default (path: NodePath): NodePath | null => {
   let typePath: NodePath | null = null;
 
-  if (isReactComponentClass(path)) {
+  if (isEmberComponentClass(path)) {
     const superTypes = path.get('superTypeParameters');
 
     if (superTypes.hasNode()) {

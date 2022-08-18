@@ -35,7 +35,7 @@ export { default as isExportsOrModuleAssignment } from './isExportsOrModuleAssig
 export { default as isReactBuiltinCall } from './isReactBuiltinCall';
 export { default as isReactChildrenElementCall } from './isReactChildrenElementCall';
 export { default as isReactCloneElementCall } from './isReactCloneElementCall';
-export { default as isReactComponentClass } from './isReactComponentClass';
+export { default as isEmberComponentClass } from './isEmberComponentClass';
 export { default as isReactComponentMethod } from './isReactComponentMethod';
 export { default as isReactCreateClassCall } from './isReactCreateClassCall';
 export { default as isReactCreateElementCall } from './isReactCreateElementCall';
