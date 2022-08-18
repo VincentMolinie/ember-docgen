@@ -15,7 +15,7 @@ argv
   .usage('[path...] [options]')
   .description(
     'Extract meta information from React components.\n' +
-      '  If a directory is passed, it is recursively traversed.'
+      '  If a directory is passed, it is recursively traversed.',
   )
   .option('-o, --out <file>', 'Store extracted information in the FILE')
   .option('--pretty', 'pretty print JSON')
@@ -24,25 +24,25 @@ argv
     'File extensions to consider. Repeat to define multiple extensions. Default: ' +
       JSON.stringify(defaultExtensions),
     collect,
-    ['js', 'jsx']
+    ['js', 'jsx'],
   )
   .option(
     '-e, --exclude <path>',
     'Filename or regex to exclude. Default: ' + JSON.stringify(defaultExclude),
     collect,
-    []
+    [],
   )
   .option(
     '-i, --ignore <path>',
     'Folders to ignore. Default: ' + JSON.stringify(defaultIgnore),
     collect,
-    ['node_modules', '__tests__', '__mocks__']
+    ['node_modules', '__tests__', '__mocks__'],
   )
   .option(
     '--resolver <resolver>',
     'Resolver name (findAllComponentDefinitions, findExportedComponentDefinition) or path to a module that exports ' +
       'a resolver. Default: findExportedComponentDefinition',
-    'findExportedComponentDefinition'
+    'findExportedComponentDefinition',
   )
   .arguments('<path>');
 
@@ -99,9 +99,7 @@ if (argv.resolver) {
 }
 
 function parse(source, filename) {
-  return parser.parse(source, resolver, null, {
-    filename,
-  });
+  return parser.parse(source, { resolver, filename });
 }
 
 function writeError(msg, filePath) {
@@ -149,7 +147,7 @@ function traverseDir(filePath, result, done) {
         throw error;
       }
       done();
-    }
+    },
   );
 }
 
@@ -230,6 +228,6 @@ if (errorMessage) {
       } else {
         writeResult(result);
       }
-    }
+    },
   );
 }

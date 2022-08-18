@@ -19,4 +19,5 @@ export {
 export type Handler = (
   documentation: Documentation,
   componentDefinition: NodePath<ComponentNode>,
+  filename?: string | null,
 ) => void;

@@ -13,12 +13,15 @@ const ERROR_MISSING_DEFINITION = 'No suitable component definition found.';
 function executeHandlers(
   handlers: Handler[],
   componentDefinitions: Array<NodePath<ComponentNode>>,
+  filename?: string | null,
 ): DocumentationObject[] {
   return componentDefinitions.map(
     (componentDefinition): DocumentationObject => {
       const documentation = new Documentation();
 
-      handlers.forEach(handler => handler(documentation, componentDefinition));
+      handlers.forEach(handler =>
+        handler(documentation, componentDefinition, filename),
+      );
 
       return postProcessDocumentation(documentation.toObject());
     },
@@ -61,7 +64,7 @@ export default function parse(
     throw new Error(ERROR_MISSING_DEFINITION);
   }
 
-  return executeHandlers(handlers, componentDefinitions);
+  return executeHandlers(handlers, componentDefinitions, babelOptions.filename);
 }
 
 export { ERROR_MISSING_DEFINITION };
