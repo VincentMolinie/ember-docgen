@@ -1,7 +1,6 @@
 import getPropType from '../utils/getPropType';
 import getPropertyName from '../utils/getPropertyName';
 import getMemberValuePath from '../utils/getMemberValuePath';
-import isReactModuleName from '../utils/isReactModuleName';
 import isRequiredPropType from '../utils/isRequiredPropType';
 import printValue from '../utils/printValue';
 import resolveToModule from '../utils/resolveToModule';
@@ -17,7 +16,7 @@ function isPropTypesExpression(path: NodePath): boolean {
   const moduleName = resolveToModule(path);
 
   if (moduleName) {
-    return isReactModuleName(moduleName) || moduleName === 'ReactPropTypes';
+    return moduleName.includes('prop-types');
   }
 
   return false;

@@ -99,7 +99,7 @@ if (argv.resolver) {
 }
 
 function parse(source, filename) {
-  return parser.parse(source, { resolver, filename });
+  return parser.parse(source, { resolver, filename })[0];
 }
 
 function writeError(msg, filePath) {
@@ -113,6 +113,7 @@ function writeError(msg, filePath) {
 }
 
 function writeResult(result) {
+  result = Array.isArray(result) ? { components: result } : result;
   result = argv.pretty
     ? JSON.stringify(result, null, 2)
     : JSON.stringify(result);
@@ -136,7 +137,7 @@ function traverseDir(filePath, result, done) {
         throw error;
       }
       try {
-        result[filename] = parse(content, path.join(filePath, filename));
+        result.push(parse(content, path.join(filePath, filename)));
       } catch (parseError) {
         writeError(parseError, filename);
       }
@@ -184,7 +185,7 @@ if (errorMessage) {
   /**
    * 3. Paths are passed
    */
-  const result = Object.create(null);
+  const result = [];
 
   async.eachSeries(
     paths,
@@ -205,7 +206,7 @@ if (errorMessage) {
           }
         } else {
           try {
-            result[filePath] = parse(fs.readFileSync(filePath), filePath);
+            result.push(parse(fs.readFileSync(filePath), filePath));
           } catch (parseError) {
             writeError(parseError, filePath);
           } finally {
@@ -215,15 +216,13 @@ if (errorMessage) {
       });
     },
     function () {
-      const resultsPaths = Object.keys(result);
-
-      if (resultsPaths.length === 0) {
+      if (result.length === 0) {
         // we must have gotten an error
         process.exitCode = 1;
       } else if (paths.length === 1) {
         // a single path?
         fs.stat(paths[0], function (error, stats) {
-          writeResult(stats.isDirectory() ? result : result[resultsPaths[0]]);
+          writeResult(stats.isDirectory() ? result : result[0]);
         });
       } else {
         writeResult(result);

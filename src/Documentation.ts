@@ -1,4 +1,5 @@
 export interface DocumentationObject {
+  displayName?: string;
   props?: Record<string, PropDescriptor>;
   context?: Record<string, PropDescriptor>;
   childContext?: Record<string, PropDescriptor>;

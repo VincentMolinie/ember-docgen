@@ -3,7 +3,10 @@ import parse from './parse';
 import * as allResolvers from './resolver';
 import * as allImporters from './importer';
 import * as utils from './utils';
-import type { DocumentationObject as Documentation } from './Documentation';
+import type {
+  DocumentationObject as Documentation,
+  PropDescriptor,
+} from './Documentation';
 import type { Resolver } from './resolver';
 import type { Importer } from './importer';
 import type { Handler } from './handlers';
@@ -55,4 +58,12 @@ export {
   utils,
 };
 
-export type { Importer, Handler, Resolver, FileState, Config, Documentation };
+export type {
+  Importer,
+  Handler,
+  Resolver,
+  FileState,
+  Config,
+  Documentation,
+  PropDescriptor,
+};
