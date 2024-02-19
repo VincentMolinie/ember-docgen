@@ -17,8 +17,6 @@ function getDisplayNameFromPath(filename?: string | null) {
     .replace(/^legacy\/pods\//g, '')
     .replace('/component.js', '');
 
-  console.log('mustacheComponentName', mustacheComponentName, filename);
-
   return mustacheComponentName
     .split('/')
     .map(mustachePath =>
