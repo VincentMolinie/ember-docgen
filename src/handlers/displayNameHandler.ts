@@ -7,17 +7,17 @@ import type { Handler } from '.';
 import type { ComponentNode } from '../resolver';
 
 function getDisplayNameFromPath(filename?: string | null) {
-  if (
-    !filename ||
-    (!filename.startsWith('app/pods/components/') &&
-      !filename.startsWith('app/components/'))
-  ) {
+  if (!filename || !filename.includes('/components/')) {
     return null;
   }
 
   const mustacheComponentName = filename
-    .replace(/app\/(pods\/)?components\//g, '')
+    .substring(filename.includes('/app/') ? filename.indexOf('/app/') + 5 : 0)
+    .replace(/\/components\//g, '/')
+    .replace(/^legacy\/pods\//g, '')
     .replace('/component.js', '');
+
+  console.log('mustacheComponentName', mustacheComponentName, filename);
 
   return mustacheComponentName
     .split('/')
