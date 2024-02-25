@@ -15,7 +15,8 @@ function getDisplayNameFromPath(filename?: string | null) {
     .substring(filename.includes('/app/') ? filename.indexOf('/app/') + 5 : 0)
     .replace(/\/components\//g, '/')
     .replace(/^legacy\/pods\//g, '')
-    .replace('/component.js', '');
+    .replace('/component.js', '')
+    .replace('/component.ts', '');
 
   return mustacheComponentName
     .split('/')

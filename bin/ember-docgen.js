@@ -133,6 +133,11 @@ function traverseDir(filePath, result, done) {
       excludeDir: ignoreDir,
     },
     function (error, content, filename, next) {
+      if (excludePatterns && excludePatterns.test(filename)) {
+        next();
+
+        return;
+      }
       if (error) {
         throw error;
       }
