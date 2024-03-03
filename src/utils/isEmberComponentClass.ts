@@ -25,11 +25,16 @@ export default function isEmberComponentClass(
   // Ember.Component or Glimmer.Component
   const superClass = resolveToValue(path.get('superClass') as NodePath);
 
+  const defaultSpecifier = (
+    superClass.node as ImportDeclaration
+  ).specifiers.find(specifier => specifier.type === 'ImportDefaultSpecifier');
+
   if (
     superClass.node.type === 'ImportDeclaration' &&
-    ['@glimmer/component', '@ember/component'].includes(
+    (['@glimmer/component', '@ember/component'].includes(
       (superClass.node as ImportDeclaration).source.value,
-    )
+    ) ||
+      defaultSpecifier?.local.name.endsWith('Component'))
   ) {
     return true;
   }
