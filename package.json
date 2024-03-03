@@ -1,6 +1,6 @@
 {
   "name": "forestadmin-ember-docgen",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A CLI and toolkit to extract information from Ember components for documentation generation.",
   "repository": {
     "type": "git",
